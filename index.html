@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>noe Designs</title>
+        <link rel="stylesheet" href="noe.css">
+        <script src="js/noedesigns.js"></script>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+        </head>
+        <body>
+            
+        <div class="navbar">
+          <div class="logo">
+            <a href="index.html"><img src="images/noe logo.PNG" height="40px"></a>
+          </div>
+              
+          <a href="index.html">Home</a>
+          <a href="services.html">Services</a>
+          <a href="contact.html">Contact</a>
+          <div class="search-container">
+            <button onclick="setSearch()">Search</button>  
+            <input type="text" placeholder="Search Product.." id="search" value="">
+              
+          </div>
+        </div>
+            
+        <!-- Title and Page -->
+        <div class="main" id="main">
+          <h1 class="title">Welcome to noe Designs.</h1>
+          <h3 class="undertitle">Home of designs by Noé</h3>
+          
+          <script >
+            getAllProducts();
+          </script>
+
+        </div>
+    </body>
+</html>
