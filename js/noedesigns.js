@@ -3,10 +3,16 @@
     let products = [
     
     {
-      "name": "Lamelo 'Melo' Ball",
-      "price": "$12.99",
-      "image": "images/Lamelo Ball.PNG",
-      "desc": "Charlotte Hornets' guard Lamelo Ball."
+      "name": "Dwyane Wade",
+      "price": "$14.99",
+      "image": "images/D Wade.PNG",
+      "desc": "NBA Legend Dwyane Wade."
+    },
+    {
+        "name": "Lamelo 'Melo' Ball",
+        "price": "$12.99",
+        "image": "images/Lamelo Ball.PNG",
+        "desc": "Charlotte Hornets' guard Lamelo Ball."
     },
     {
         "name": "A kid from Akron",
@@ -120,6 +126,9 @@
     
     
   ]
+
+  let cartItems = [];
+  sessionStorage.setItem("cart", cartItems)
 
   // call getProducts() to display products in 'products' array which holds them all
   function getAllProducts(){
@@ -238,11 +247,15 @@
         card.appendChild(desc);
         // add css
         card.className = "product";
-        // add constructed div to the page
+        // add constructed div to the page 
         document.getElementById("picture").appendChild(pic);
         document.getElementById("info").appendChild(name);
         document.getElementById("info").appendChild(price);
         document.getElementById("info").appendChild(desc);
+
+        //product info to be used in cart (getting info from variables above)
+        var prodInfo = [pic.src, name.innerText, price.innerText];
+
         // add to cart button with css
         var atc = document.createElement("button");
         atc.innerText = "Add To Cart";
@@ -252,7 +265,12 @@
         atc.style.fontSize = "18px";
         atc.style.fontFamily = "EngraversGothic BT";
         atc.onclick = function(){
-            alert("Added To Cart (Not Really).")
+            cartItems = JSON.parse(sessionStorage.getItem("cart"));
+            cartItems.push(JSON.stringify(prodInfo));
+            sessionStorage.setItem("cart", JSON.stringify(cartItems));
+            cartItems.forEach(element => {
+                console.log(element[0])
+            });
         }
         document.getElementById("info").appendChild(atc);
     }
